@@ -1,0 +1,117 @@
+/*
+ * NexJob visual layer — intentionally isolated from document/PDF templates.
+ * All interactive routes and backend behavior are inherited from Dossier.
+ */
+
+.nexjob-shell {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 48% 34% at 98% 3%, rgb(151 226 250 / 0.42), transparent 90%),
+    radial-gradient(ellipse 42% 48% at 0% 97%, rgb(173 205 252 / 0.38), transparent 85%),
+    var(--color-paper);
+}
+.nexjob-workspace { background: transparent; }
+.nexjob-main-panel {
+  background: light-dark(rgb(255 255 255 / 0.9), rgb(26 40 53 / 0.94));
+  box-shadow: 0 10px 42px light-dark(rgb(53 118 156 / 0.055), rgb(0 0 0 / 0.23));
+}
+.nexjob-sidebar {
+  z-index: 30;
+  background: light-dark(rgb(246 252 255 / 0.77), rgb(23 35 48 / 0.84));
+  border-color: light-dark(rgb(255 255 255 / 0.85), rgb(174 214 235 / 0.11));
+  box-shadow: inset -1px 0 light-dark(rgb(255 255 255 / 0.84), rgb(255 255 255 / 0.05));
+}
+.nexjob-sidebar nav [aria-current="page"] {
+  color: var(--color-primary-text);
+  background: light-dark(rgb(142 224 248 / 0.29), rgb(56 142 166 / 0.25));
+  box-shadow: inset 0 0 0 1px light-dark(rgb(106 195 224 / 0.24), rgb(91 190 218 / 0.18));
+}
+.nexjob-sidebar nav a {
+  border-radius: 10px;
+}
+.nexjob-sidebar nav a:hover {
+  background: var(--color-hover);
+}
+.nexjob-pagebar-frame { background: transparent; }
+.nexjob-pagebar {
+  background: light-dark(rgb(255 255 255 / 0.84), rgb(26 40 53 / 0.88));
+  border-color: var(--color-line-card);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.6);
+}
+.nexjob-glass-card, .nexjob-action-card {
+  background: light-dark(rgb(255 255 255 / 0.73), rgb(34 52 67 / 0.84));
+  border-color: light-dark(rgb(112 163 190 / 0.22), rgb(174 214 235 / 0.15));
+  box-shadow: 0 5px 20px light-dark(rgb(58 117 158 / 0.055), rgb(0 0 0 / 0.13)),
+              inset 0 1px light-dark(rgb(255 255 255 / 0.87), rgb(255 255 255 / 0.035));
+}
+.nexjob-action-card {
+  min-height: 92px;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.nexjob-action-card:hover {
+  transform: translateY(-2px);
+  border-color: light-dark(rgb(42 155 193 / 0.45), rgb(100 208 232 / 0.48));
+  box-shadow: 0 12px 26px light-dark(rgb(57 135 173 / 0.12), rgb(0 0 0 / 0.24));
+}
+.nexjob-action-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--color-primary-text);
+  background: light-dark(rgb(206 246 255 / 0.65), rgb(54 130 150 / 0.3));
+}
+.nexjob-actions-wrap { max-width: 1480px; }
+.nexjob-login {
+  background: radial-gradient(circle at 100% 0%, rgb(181 231 251 / 0.27), transparent 48%), var(--color-surface);
+}
+.nexjob-login-art {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 67% 34%, rgb(178 241 251 / 0.7), transparent 32%),
+    radial-gradient(circle at 24% 79%, rgb(153 197 252 / 0.6), transparent 38%),
+    light-dark(#eaf8fe, #172d3a);
+}
+.nexjob-login-art::before {
+  content: "";
+  position: absolute;
+  width: min(60vw, 620px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 0.68);
+  border-radius: 50%;
+  box-shadow: 0 0 0 48px rgb(255 255 255 / 0.13), 0 0 0 100px rgb(255 255 255 / 0.085);
+}
+.nexjob-login-emblem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 36px;
+  border-radius: 28px;
+  background: light-dark(rgb(255 255 255 / 0.45), rgb(29 57 76 / 0.42));
+  border: 1px solid rgb(255 255 255 / 0.63);
+  box-shadow: 0 25px 80px rgb(52 120 164 / 0.1), inset 0 1px rgb(255 255 255 / 0.85);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nexjob-sidebar, .nexjob-pagebar, .nexjob-glass-card,
+  .nexjob-action-card, .nexjob-login-emblem {
+    -webkit-backdrop-filter: blur(20px) saturate(155%);
+    backdrop-filter: blur(20px) saturate(155%);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nexjob-sidebar { background: var(--color-sidebar); }
+  .nexjob-main-panel, .nexjob-pagebar, .nexjob-glass-card,
+  .nexjob-action-card, .nexjob-login-emblem { background: var(--color-surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nexjob-action-card { transition: none; }
+  .nexjob-action-card:hover { transform: none; }
+}
+@media (max-width: 640px) {
+  .nexjob-actions-grid { grid-template-columns: 1fr; }
+  .nexjob-action-card { min-height: 68px; }
+}

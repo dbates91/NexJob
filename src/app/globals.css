@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./nexjob.css";
 
 /*
  * Design tokens, taken from the prototype (design/Dossier.dc.html).
@@ -14,51 +15,51 @@
    */
 
   /* Surfaces: a beige shell, like the sidebar, around the screen's panel. */
-  --color-paper: light-dark(#eeebe4, #1a1917); /* shell around the panel, side columns, disabled fields */
-  --color-sidebar: light-dark(#eeebe4, #1a1917);
-  --color-surface: light-dark(#f4f2ed, #22201d); /* the panel each screen sits in */
-  --color-card: light-dark(#fbfaf7, #2a2825);
-  --color-canvas: light-dark(#e8e5de, #141311); /* behind document previews */
-  --color-input: light-dark(#ffffff, #1e1c1a); /* inputs */
+  --color-paper: light-dark(#eef6fc, #151e29); /* shell around the panel, side columns, disabled fields */
+  --color-sidebar: light-dark(#eef8fd, #172330);
+  --color-surface: light-dark(#ffffff, #1b2936); /* the panel each screen sits in */
+  --color-card: light-dark(#ffffff, #233240);
+  --color-canvas: light-dark(#eaf4fb, #121e28); /* behind document previews */
+  --color-input: light-dark(#ffffff, #1b2936); /* inputs */
 
   /* Text */
-  --color-ink: light-dark(#1d1c1a, #f0ede7);
-  --color-document: light-dark(#2b2a27, #e5e1d9); /* posting text, set like a document */
+  --color-ink: light-dark(#20374a, #e8f3fa);
+  --color-document: light-dark(#30495b, #dce9f1); /* posting text, set like a document */
   /* Secondary text: hints, labels, metadata. It passes on every surface
      and on the hover tints, but not on a selected item over the shell
      (4.3:1 in the light scheme): use ink there. */
-  --color-muted: light-dark(#69655d, #aaa59c);
+  --color-muted: light-dark(#576e80, #aec1cf);
   /* Disabled and decorative only: never for text people need to read. */
-  --color-faint: light-dark(#a29d94, #6e6961);
+  --color-faint: light-dark(#91a4b3, #71899a);
 
   /* Primary actions: near-black, and near-white in the dark scheme, with
      on-primary text at 4.5:1 or more. primary-text is for text and icons
      marking a choice, e.g. a selected chip's label. */
-  --color-primary: light-dark(#222222, #ebe7df);
-  --color-primary-hover: light-dark(#3a3936, #ffffff);
-  --color-on-primary: light-dark(#fbfaf7, #1d1c1a);
-  --color-primary-text: light-dark(#1d1c1a, #f0ede7);
+  --color-primary: light-dark(#087e98, #7cdeed);
+  --color-primary-hover: light-dark(#066c83, #a5eaf4);
+  --color-on-primary: light-dark(#ffffff, #112e3a);
+  --color-primary-text: light-dark(#08748a, #86e4f2);
   /* Focus rings: 3:1 against every surface. */
-  --color-focus: light-dark(#1d1c1a, #f0ede7);
+  --color-focus: light-dark(#086c83, #86e4f2);
 
   /* Toasts and tooltips: a dark chip, a little raised in the dark scheme. */
-  --color-inverse: light-dark(#222222, #3b3834);
-  --color-on-inverse: light-dark(#fbfaf7, #f0ede7);
+  --color-inverse: light-dark(#1c3b51, #284557);
+  --color-on-inverse: light-dark(#ffffff, #ecfaff);
 
   /* Lines */
-  --color-line: light-dark(rgb(29 28 26 / 0.08), rgb(240 237 231 / 0.07)); /* dividers */
-  --color-line-card: light-dark(rgb(29 28 26 / 0.1), rgb(240 237 231 / 0.1));
-  --color-line-field: light-dark(rgb(29 28 26 / 0.14), rgb(240 237 231 / 0.14)); /* chips and other controls named by their text */
+  --color-line: light-dark(rgb(38 99 133 / 0.1), rgb(185 215 233 / 0.1)); /* dividers */
+  --color-line-card: light-dark(rgb(44 107 139 / 0.14), rgb(185 215 233 / 0.13));
+  --color-line-field: light-dark(rgb(42 103 135 / 0.22), rgb(185 215 233 / 0.2)); /* chips and other controls named by their text */
   /* Text fields, whose border is what shows they're fields: 3:1 on every surface (E11-3, WCAG 1.4.11). */
-  --color-line-input: light-dark(rgb(29 28 26 / 0.5), rgb(240 237 231 / 0.42));
-  --color-line-control: light-dark(rgb(29 28 26 / 0.16), rgb(240 237 231 / 0.14)); /* secondary buttons */
-  --color-line-popover: light-dark(rgb(29 28 26 / 0.12), rgb(240 237 231 / 0.12)); /* menus */
-  --color-line-strong: light-dark(rgb(29 28 26 / 0.2), rgb(240 237 231 / 0.24)); /* upcoming steps */
+  --color-line-input: light-dark(rgb(38 83 109 / 0.53), rgb(185 215 233 / 0.55));
+  --color-line-control: light-dark(rgb(45 103 135 / 0.24), rgb(185 215 233 / 0.2)); /* secondary buttons */
+  --color-line-popover: light-dark(rgb(45 103 135 / 0.17), rgb(185 215 233 / 0.17)); /* menus */
+  --color-line-strong: light-dark(rgb(38 83 109 / 0.3), rgb(185 215 233 / 0.3)); /* upcoming steps */
 
   /* Tints for hover, selection and tracks */
-  --color-hover: light-dark(rgb(29 28 26 / 0.05), rgb(240 237 231 / 0.07));
-  --color-selected: light-dark(rgb(29 28 26 / 0.07), rgb(240 237 231 / 0.1));
-  --color-track: light-dark(rgb(29 28 26 / 0.06), rgb(240 237 231 / 0.08));
+  --color-hover: light-dark(rgb(6 129 168 / 0.07), rgb(185 215 233 / 0.08));
+  --color-selected: light-dark(rgb(8 149 183 / 0.12), rgb(94 201 231 / 0.16));
+  --color-track: light-dark(rgb(45 103 135 / 0.08), rgb(185 215 233 / 0.1));
   --color-toggle-off: light-dark(rgb(29 28 26 / 0.5), rgb(240 237 231 / 0.42)); /* 3:1, like text fields */
 
   /* Feedback. error and danger are for text; danger-fill is behind white text. */
@@ -90,13 +91,13 @@
   /* Radii */
   --radius-control: 8px; /* buttons, inputs, nav items */
   --radius-toast: 12px;
-  --radius-card: 12px;
-  --radius-panel: 12px; /* large cards and panels */
-  --radius-dialog: 16px;
+  --radius-card: 16px;
+  --radius-panel: 18px; /* large cards and panels */
+  --radius-dialog: 20px;
 
   /* Shadows: warm in the light scheme, deeper in the dark one, where a faint one wouldn't show. */
-  --shadow-page: 0 1px 2px rgb(0 0 0 / 0.06), 0 12px 40px light-dark(rgb(40 35 25 / 0.1), rgb(0 0 0 / 0.5));
-  --shadow-dialog: 0 8px 32px light-dark(rgb(40 35 25 / 0.16), rgb(0 0 0 / 0.5));
+  --shadow-page: 0 2px 8px rgb(21 94 131 / 0.04), 0 18px 48px light-dark(rgb(42 116 158 / 0.08), rgb(0 0 0 / 0.38));
+  --shadow-dialog: 0 18px 52px light-dark(rgb(42 116 158 / 0.18), rgb(0 0 0 / 0.5));
   --shadow-raised: 0 1px 2px light-dark(rgb(0 0 0 / 0.08), rgb(0 0 0 / 0.5)); /* selected segment */
   --shadow-control: 0 1px 3px light-dark(rgb(40 35 25 / 0.08), rgb(0 0 0 / 0.3)); /* fields and secondary buttons */
   --shadow-cta: 0 1px 3px light-dark(rgb(40 35 25 / 0.14), rgb(0 0 0 / 0.4));
@@ -121,7 +122,7 @@
   --text-section--line-height: 1.2;
   --text-section--letter-spacing: -0.01em;
   --text-section--font-weight: 500;
-  --text-title: 40px; /* page titles (serif) */
+  --text-title: 36px; /* page titles (serif) */
   --text-title--line-height: 1.1;
   --text-title--letter-spacing: -0.015em;
   --text-title--font-weight: 400;
@@ -159,8 +160,8 @@
 
 /* Fonts come from next/font (src/fonts), which sets the --typeface-* variables at runtime. */
 @theme inline {
-  --font-sans: var(--typeface-geist);
-  --font-serif: var(--typeface-newsreader);
+  --font-sans: -apple-system, BlinkMacSystemFont, var(--typeface-geist), "Segoe UI", sans-serif;
+  --font-serif: -apple-system, BlinkMacSystemFont, var(--typeface-geist), "Segoe UI", sans-serif;
   --font-mono: var(--typeface-plex-mono);
   --font-plex-sans: var(--typeface-plex-sans);
   --font-garamond: var(--typeface-eb-garamond);

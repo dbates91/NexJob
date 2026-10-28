@@ -15,14 +15,14 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
 
   return (
     // The form on the panel's colour, a warm wash on the right.
-    <main className="grid min-h-screen bg-surface min-[960px]:grid-cols-2">
+    <main className="nexjob-login grid min-h-screen bg-surface min-[960px]:grid-cols-2">
       <div className="flex items-center justify-center px-8 py-12">
       <div className="flex w-full max-w-[400px] flex-col gap-8">
         <div className="flex flex-col items-start gap-2">
           <BrandMark className="size-10" />
           <div className="flex flex-col">
-            <div className="font-serif text-[30px] font-medium tracking-[-0.01em]">Dossier</div>
-            <div className="text-sm text-muted">Your job search, on your server</div>
+            <div className="font-sans text-[30px] font-semibold tracking-[-0.04em]">NexJob</div>
+            <div className="text-sm text-muted">Your next opportunity is one click away.</div>
           </div>
         </div>
         <LoginForm next={typeof next === "string" ? next : undefined} />
@@ -35,9 +35,9 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
       </div>
       <div
         aria-hidden="true"
-        className="hidden bg-[linear-gradient(to_left,color-mix(in_srgb,var(--color-ink)_9%,transparent)_0%,transparent_65%)] min-[960px]:grid min-[960px]:place-items-center"
+        className="nexjob-login-art hidden min-[960px]:grid min-[960px]:place-items-center"
       >
-        <BrandMark className="size-40 opacity-90 shadow-dialog rounded-[36px]" />
+        <div className="nexjob-login-emblem"><BrandMark className="size-32 drop-shadow-lg" /><p className="mt-8 text-center text-sm font-medium tracking-wide text-ink">One place for your next move.</p></div>
       </div>
     </main>
   );

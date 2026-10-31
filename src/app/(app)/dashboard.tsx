@@ -1,3 +1,4 @@
+import { ArrowUpRight, BriefcaseBusiness, FileText, Search } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -15,7 +16,7 @@ import { Greeting } from "./greeting";
 import { PeriodFilter, PeriodScoped } from "./period-filter";
 import { QuietDays } from "./quiet-days";
 
-const card = "flex flex-col rounded-panel border border-line-card bg-card";
+const card = "nexjob-glass-card flex flex-col rounded-panel border border-line-card bg-card";
 const plural = (count: number, one: string, many: string) => `${count} ${count === 1 ? one : many}`;
 
 /** The dashboard (DSH-1 to DSH-6): the funnel, where things stand, what's worth a look, and the calendar. */
@@ -61,6 +62,30 @@ export function Dashboard({
         }
       />
 
+      <div className="nexjob-actions-wrap px-5 pb-7 sm:px-10">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Your workspace</span>
+          <span className="hidden text-[11px] text-muted sm:block">Everything you need, one click away.</span>
+        </div>
+        <div className="nexjob-actions-grid grid gap-3 sm:grid-cols-3">
+          <Link href="/jobs" className="nexjob-action-card group flex items-center gap-3 rounded-card border border-line-card p-4">
+            <span className="nexjob-action-icon"><Search size={18} aria-hidden="true" /></span>
+            <span className="min-w-0 flex-1"><strong className="block text-sm font-semibold text-ink">Discover jobs</strong><span className="block text-xs text-muted">Search new opportunities</span></span>
+            <ArrowUpRight size={16} aria-hidden="true" className="shrink-0 text-primary-text" />
+          </Link>
+          <Link href="/applications" className="nexjob-action-card group flex items-center gap-3 rounded-card border border-line-card p-4">
+            <span className="nexjob-action-icon"><BriefcaseBusiness size={18} aria-hidden="true" /></span>
+            <span className="min-w-0 flex-1"><strong className="block text-sm font-semibold text-ink">Applications</strong><span className="block text-xs text-muted">View your pipeline</span></span>
+            <ArrowUpRight size={16} aria-hidden="true" className="shrink-0 text-primary-text" />
+          </Link>
+          <Link href="/resume" className="nexjob-action-card group flex items-center gap-3 rounded-card border border-line-card p-4">
+            <span className="nexjob-action-icon"><FileText size={18} aria-hidden="true" /></span>
+            <span className="min-w-0 flex-1"><strong className="block text-sm font-semibold text-ink">Resume workspace</strong><span className="block text-xs text-muted">Refine your base resume</span></span>
+            <ArrowUpRight size={16} aria-hidden="true" className="shrink-0 text-primary-text" />
+          </Link>
+        </div>
+      </div>
+
       {empty ? (
         <Columns calendar={calendar}>
           <Welcome />
@@ -87,7 +112,7 @@ export function Dashboard({
  */
 function Columns({ calendar, children }: { calendar?: ReactNode; children: ReactNode }) {
   return (
-    <div className="@container px-10 pb-[72px]">
+    <div className="@container px-5 pb-[72px] sm:px-10">
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-5 @min-[1240px]:grid-cols-[minmax(0,1200px)_400px]">
         {children}
         {calendar && <div className="min-w-0 @min-[780px]:max-w-[calc(50%-10px)] @min-[1240px]:max-w-none">{calendar}</div>}
@@ -200,7 +225,7 @@ function WorthALook({ items, quietDays }: { items: DashboardFigures["attention"]
 function Welcome() {
   return (
     <Panel>
-      <h2 className="font-serif text-section">Welcome to Dossier</h2>
+      <h2 className="font-serif text-section">Welcome to NexJob</h2>
       <p className="text-sm text-muted">
         Start with your profile: your roles, skills and education are what every tailored resume and cover letter is built from.
         Then paste a job posting, and your funnel and next steps will show up here.
